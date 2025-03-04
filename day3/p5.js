@@ -2,9 +2,11 @@ const http = require("http");
 const fs = require("fs/promises");
 
 const server = http.createServer(async (req, res) => {
-  const data = await fs.readFile("./data.json");
-  res.writeHead(200, { "content-type": "application/json" });
-  res.end(data);
+  res.setHeader(200, { "content-type": "application/json" });
+  if (req.url === "/getdata" && req.method === "GET") {
+    const data = await fs.readFile("./data.json");
+    res.end(JSON.stringify(data));
+  }
 });
 
 server.listen(9000, (err) => {
