@@ -10,7 +10,7 @@ const Update = () => {
     const users = { name, age };
 
     try {
-      await axios.put(`http://localhost:9000/users/${id}`, users);
+      await axios.put(`https://backend-e35w.onrender.com/users/${id}`, users);
       alert("User updated successfully");
     } catch (error) {
       alert("Error updating user: " + error.message);
