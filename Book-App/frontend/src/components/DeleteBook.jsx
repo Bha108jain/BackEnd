@@ -13,7 +13,7 @@ const DeleteBook = () => {
   const fetchBooks = async () => {
     setLoading(true); // Set loading true while fetching
     try {
-      const res = await axios.get("http://localhost:3000/books");
+      const res = await axios.get("https://book-store-o8pu.onrender.com/books");
       console.log(res.data); // Log data to check structure
       setBooks(res.data);
     } catch (error) {
@@ -30,7 +30,7 @@ const DeleteBook = () => {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:3000/books/${id}`);
+      await axios.delete(`https://book-store-o8pu.onrender.com/books/${id}`);
       alert("Book deleted successfully");
       fetchBooks(); // Refresh book list after deletion
     } catch (error) {
