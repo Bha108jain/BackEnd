@@ -18,7 +18,7 @@ const UpdateBook = () => {
 
   const fetchBooks = async () => {
     try {
-      const res = await axios.get("http://localhost:9000/books");
+      const res = await axios.get("http://localhost:3000/books");
       setBooks(res.data);
     } catch (error) {
       console.error(error);
@@ -50,7 +50,7 @@ const UpdateBook = () => {
     e.preventDefault();
     try {
       await axios.put(
-        `http://localhost:9000/books/${selectedBookId}`,
+        `http://localhost:3000/books/${selectedBookId}`,
         formData
       );
       alert("Book updated successfully");
@@ -63,18 +63,20 @@ const UpdateBook = () => {
 
   return (
     <div>
-      <h2>Update Book</h2>
-
-      <h4>Select a book to update:</h4>
+      <h2 style={{ color: "black" }}>Update Book</h2>{" "}
+      {/* Inline CSS to make text black */}
+      <h4 style={{ color: "black" }}>Select a book to update:</h4>{" "}
+      {/* Inline CSS to make text black */}
       <ul>
         {books.map((book) => (
-          <li key={book._id}>
+          <li key={book._id} style={{ color: "black" }}>
+            {" "}
+            {/* Inline CSS to make text black */}
             <strong>{book.title}</strong> by {book.author}{" "}
             <button onClick={() => handleSelect(book._id)}>Edit</button>
           </li>
         ))}
       </ul>
-
       {selectedBookId && (
         <form onSubmit={handleUpdate} style={{ marginTop: "20px" }}>
           <input

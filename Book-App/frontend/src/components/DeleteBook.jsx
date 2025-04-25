@@ -3,6 +3,7 @@ import axios from "axios";
 
 const DeleteBook = () => {
   const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(true); // Loading state
 
   // Fetch all books on component mount
   useEffect(() => {
@@ -10,17 +11,22 @@ const DeleteBook = () => {
   }, []);
 
   const fetchBooks = async () => {
+    setLoading(true); // Set loading true while fetching
     try {
       const res = await axios.get("http://localhost:3000/books");
+      console.log(res.data); // Log data to check structure
       setBooks(res.data);
     } catch (error) {
       console.error(error);
       alert("Error fetching books");
     }
+    setLoading(false); // Set loading false after fetching
   };
 
   const handleDelete = async (id) => {
-    const confirmDelete = confirm("Are you sure you want to delete this book?");
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this book?"
+    );
     if (!confirmDelete) return;
 
     try {
@@ -36,13 +42,17 @@ const DeleteBook = () => {
   return (
     <div>
       <h2>Delete Books</h2>
-      {books.length === 0 ? (
+      {loading ? (
+        <p>Loading books...</p>
+      ) : books.length === 0 ? (
         <p>No books available</p>
       ) : (
         <ul>
           {books.map((book) => (
-            <li key={book._id}>
-              <strong>{book.title}</strong> by {book.author}{" "}
+            <li key={book._id} style={{ color: "black" }}>
+              {" "}
+              {/* Inline style to make text black */}
+              <strong>{book.title}</strong> by {book.author}
               <button onClick={() => handleDelete(book._id)}>Delete</button>
             </li>
           ))}

@@ -50,11 +50,12 @@ app.get("/books", async (req, res) => {
 app.get("/search", async (req, res) => {
   const { title } = req.query;
   try {
-    const books = await Book.find({ title: { $regex: title, $options: "i" } });
+    const books = await Book.find({
+      title: { $regex: title, $options: "i" }, // Case-insensitive search
+    });
     res.json(books);
   } catch (error) {
-    console.error(error);
-    res.status(500).send("Server Error");
+    res.status(500).send("Error fetching books");
   }
 });
 

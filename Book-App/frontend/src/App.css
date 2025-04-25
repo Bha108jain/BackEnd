@@ -1,33 +1,255 @@
-body{
+/* General Styling */
+* {
     margin: 0;
-    font-family:Arial, sans-serif;
-    background-color: #f2f2f2;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-nav{
-    background-color:#333;
-    padding: 1rem;
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff6a00, #d34b00);
+    color: #fff;
+    min-height: 100vh;
+    padding-bottom: 30px;
+    transition: background 0.5s ease;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #212121;
+    padding: 15px 30px;
     display: flex;
-    gap: 1.5rem;
     justify-content: center;
+    gap: 30px;
+    border-bottom: 4px solid #ff6a00;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
 nav a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-nav a:hover{
-    background-color:#555;
+    font-size: 1.2rem;
+    padding: 12px 20px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-nav a:active{
-    background-color: #007bff;
+nav a:hover {
+    background-color: #ff6a00;
+    transform: scale(1.1);
 }
-div{
-    padding: 2rem;
+
+nav a:active {
+    background-color: #e14d00;
+    transform: scale(1);
+}
+
+/* Main Content Area */
+div {
+    padding: 3rem;
     text-align: center;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin: 40px auto;
+    animation: fadeIn 0.5s ease-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+div:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #ff6a00;
+    margin-bottom: 20px;
+}
+
+h2, h3 {
+    color: #333;
+    font-size: 1.5rem;
+    margin-top: 15px;
+}
+
+/* Button Styling */
+button {
+    padding: 14px 28px;
+    background-color: #ff6a00;
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #e14d00;
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: #d34b00;
+    transform: scale(0.98);
+}
+
+/* Input Styling */
+input[type="text"], input[type="date"] {
+    padding: 14px 20px;
+    margin: 10px 0;
+    border-radius: 15px;
+    border: 2px solid #ff6a00;
+    background-color: #f9f9f9;
+    font-size: 1.1rem;
+    transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="date"]:focus {
+    outline: none;
+    border-color: #e14d00;
+    background-color: #ff6a00;
+    color: white;
+}
+
+/* Hover and Active effects */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    button {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+
+    div {
+        padding: 2rem;
+    }
+}
+
+/* Book Styling for View & Delete */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap; /* Ensures books wrap into new rows when necessary */
+    justify-content: space-evenly; /* Distributes items evenly across the row */
+}
+
+li {
+    background-color: #fff;
+    margin: 15px;
+    padding: 20px; /* Increased padding for better content spacing */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Increased shadow intensity */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 45%; /* Ensures two items per row */
+    text-align: center;
+    cursor: pointer;
+    background: linear-gradient(135deg, #f4f4f4, #dbe4e4); /* Gradient background */
+    border: 1px solid #e0e0e0; /* Light border */
+}
+
+li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+    background-color: #ffecd2;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.5s ease;
+}
+
+li img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px; /* Adding space between image and text */
+}
+
+li h3 {
+    color: #000 !important; /* Force black color with !important */
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+li button {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+li button:hover {
+    background-color: #e60000;
+}
+
+li button:active {
+    background-color: #b30000;
+}
+
+/* Search and Update Button Styling */
+button.update-btn, button.search-btn {
+    color: black; /* Button text color set to black for better visibility */
+    background-color: #ff6a00; /* Orange background for both buttons */
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button.update-btn:hover, button.search-btn:hover {
+    background-color: #e14d00;
+    transform: scale(1.05);
+}
+
+button.update-btn:active, button.search-btn:active {
+    background-color: #d34b00;
+    transform: scale(0.98);
+}
+
+/* Centering Button in ViewBook */
+button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Custom Book Button Text */
+button.book-btn {
+    background-color: #0077b6;
+    color: white;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button.book-btn:hover {
+    background-color: #005c8e;
+    transform: scale(1.05);
+}
+
+button.book-btn:active {
+    background-color: #00466d;
+    transform: scale(0.98);
 }
