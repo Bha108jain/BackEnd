@@ -59,6 +59,12 @@ app.get("/search", async (req, res) => {
   }
 });
 
+app.put("/books/:id", async (req, res) => {
+  const book = await Book.findByIdAndUpdate(req.params.id, req.body);
+  if (!book) return res.status(404).send("Book Not Found");
+  res.json(book);
+});
+
 app.delete("/books/:id", async (req, res) => {
   try {
     const book = await Book.findByIdAndDelete(req.params.id);
